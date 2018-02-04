@@ -1,0 +1,125 @@
+---
+title: "PECL 1"
+author: "Rubén Pérez Ortiz"
+date: "3 de febrero de 2018"
+output:
+  word_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Satelites
+
+Satelites Menores de Urano, que hemos utilizado en la descripcion teórica del tema.
+En texto plano, txt. Obteniendo los valores de las mismas magnitudes cuyo valor hemos calculado de forma manual
+
+```
+```
+```{r}
+#Cargamos datos de un fichero de texto plano
+data <- read.table("satelites.txt",header = TRUE)
+radios<-data[,2]
+
+#Media
+mean(radios)
+
+#Mediana
+median(radios)
+
+#Desviacion tipica
+sd(radios)
+
+#Rango Intercuartil
+IQR(radios)
+
+#Cuartiles
+
+#Primer Cuartil
+quantile(radios,.25)
+
+#Segundo Cuartil
+quantile(radios,.50)
+
+#Tercer Cuartil
+quantile(radios,.75)
+
+#Percentiles
+
+for (i in 1:99){
+  cat(paste("Percentil ", i," =>"))
+  cat(quantile(radios,i/100))
+  cat("\n")
+}
+
+#Deciles
+for (i in 1:10){
+  cat(paste("Percentil ", i," =>"))
+  cat(quantile(radios,i/10))
+  cat("\n")
+}
+
+#Calcula la moda
+library(modeest)
+mfv(radios)
+```
+
+## Coches
+
+Fichero con datos de automoviles en spss,con su consumo en mpg (millas 
+por galón), cilindrada, aceleración, año de fabricación modelo...
+Obteniendo los valores de las mismas magnitudes que hemos visto en teoria.
+
+```{r}
+library(foreign)
+#Cargamos datos de un fichero de spss
+data2<- read.spss("cardata.sav",use.value.labels=TRUE, max.value.labels=TRUE, to.data.frame=TRUE) 
+
+#Tomamos solo la magnitud de consumo en mpg
+consumo <- data2[,1]
+
+#Eliminamos los datos NA para el estudio estadistico
+consumoTratado =na.omit(consumo)
+
+#Media
+mean(consumoTratado)
+
+#Mediana
+median(consumoTratado)
+
+#Desviacion tipica
+sd(consumoTratado)
+
+#Rango Intercuartil
+IQR(consumoTratado)
+
+#Cuartiles
+
+#Primer Cuartil
+quantile(consumoTratado,.25)
+
+#Segundo Cuartil
+quantile(consumoTratado,.50)
+
+#Tercer Cuartil
+quantile(consumoTratado,.75)
+
+#Percentiles
+for (i in 1:99){
+  cat("Percentil ", i ," => ")
+  cat(quantile(consumoTratado,i/100),"\n")
+}
+
+#Deciles
+for (i in 1:10){
+  cat("Decil ", i ," => ")
+  cat(quantile(consumoTratado,i/10),"\n")
+}
+
+#Calcula la moda
+library(modeest)
+mfv(consumoTratado)
+```
+

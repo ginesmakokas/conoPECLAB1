@@ -1,0 +1,13 @@
+"Nombre"	"Radio"
+"Cordelia"	13	
+"Ofelia"	16
+"Bianca"	22
+"Crésida"	33
+"Desdémona"	29
+"Julieta"	42
+"Rosalinda"	27
+"Belinda"	34
+"Luna-1986U10"	20
+"Calíbano"	30
+"Luna-999U1"	20
+"Luna 1999U2"	15
